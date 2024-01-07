@@ -17,7 +17,6 @@
 	 "math/big"
 	 "os"
 	 "time"
- 
 	 "github.com/unidoc/unipdf/v3/annotator"
 	 "github.com/unidoc/unipdf/v3/common/license"
 	 "github.com/unidoc/unipdf/v3/core"
@@ -72,11 +71,11 @@
 	 }
 	 defer wImgFile.Close()
  
-	 signatureWImage, _, err := image.Decode(wImgFile)
-	 if err != nil {
-		 log.Fatalf("Fail: %v\n", err)
-	 }
-	 fmt.Print(signatureWImage)
+	//  signatureWImage, _, err := image.Decode(wImgFile)
+	//  if err != nil {
+	// 	 log.Fatalf("Fail: %v\n", err)
+	//  }
+	
 	 // Create appender.
 	 appender, err := model.NewPdfAppender(reader)
 	 if err != nil {
@@ -105,8 +104,8 @@
 	 }
  
 	 // Create signature fields and add them on each page of the PDF file.
-	 for i := 0; i < numPages; i++ {
-		 pageNum := i + 1
+	//  for i := 0; i < numPages; i++ {
+		 pageNum := numPages - 1
  
 		 // Only Image Signature
 		 var opts = annotator.NewSignatureFieldOpts()
@@ -114,14 +113,14 @@
 		 opts.Image = signatureImage
 		//  opts.WatermarkImage = signatureWImage
  
-		 var sigField, err = annotator.NewSignatureField(signature, nil, opts)
+		 var sigField, err1 = annotator.NewSignatureField(signature, nil, opts)
  
 		 sigField.T = core.MakeString(fmt.Sprintf("Signature5 %d", pageNum))
  
-		 if err = appender.Sign(pageNum, sigField); err != nil {
-			 log.Fatalf("Fail: %v\n", err)
+		 if err1 = appender.Sign(pageNum, sigField); err1!= nil {
+			 log.Fatalf("Fail: %v\n", err1)
 		 }
-	 }
+	//  }
  
 	 // Write output PDF file.
 	 err = appender.WriteToFile(outputPath)

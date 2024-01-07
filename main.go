@@ -2,11 +2,7 @@ package main
 
 import (
     "net/http"
-
-
     "github.com/gorilla/handlers"
-
-
     "github.com/gorilla/mux"
 	"github.com/sakthii-subramanian/digi-sign/signature"
 	"github.com/sakthii-subramanian/digi-sign/fileUpload"
@@ -15,27 +11,6 @@ import (
 )
 
 func main() {
-    // r := mux.NewRouter()
-
-    // // Enable CORS for all routes.
-    // // Replace "*" with the specific origin(s) you want to allow.
-    // corsMiddleware := func(next http.Handler) http.Handler {
-    //     return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-    //         w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
-    //         w.Header().Set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
-    //         w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
-
-    //         if r.Method == "OPTIONS" {
-    //             w.WriteHeader(http.StatusNoContent)
-    //             return
-    //         }
-
-    //         next.ServeHTTP(w, r)
-    //     })
-    // }
-
-    // // Apply the CORS middleware to all routes.
-    // r.Use(corsMiddleware)
    
     // Set up CORS middleware
     corsMiddleware := handlers.CORS(

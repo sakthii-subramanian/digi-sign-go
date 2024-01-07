@@ -6,8 +6,6 @@ import (
 	"os"
 	"io"
 	"github.com/sakthii-subramanian/digi-sign/unipdflib"
-	"fmt"
-
 )
 
 func HandleSignature(w http.ResponseWriter, r *http.Request) {
@@ -17,8 +15,8 @@ func HandleSignature(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer file.Close()
-	fmt.Print("hey handle sign")
-	// fmt.Print(r.FormValue("filename"))
+	
+	
 	// Save the uploaded file
 	filePath := "./uploads/" + fheader.Filename
 	dst, err := os.Create(filePath)
